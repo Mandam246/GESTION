@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestionnaire Scolaire - Présentation</title>
+    <style>
+        :root { --primary: #2563eb; --bg: #f8fafc; --text: #1e293b; --accent: #0f172a; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 0; }
+        .container { max-width: 1100px; margin: auto; padding: 20px; }
+        
+        /* Introduction & Header */
+        header { background: white; padding: 40px 20px; text-align: center; border-bottom: 1px solid #e2e8f0; margin-bottom: 40px; }
+        .intro { max-width: 800px; margin: 0 auto 20px auto; line-height: 1.6; color: #475569; font-size: 1.1rem; }
+        h1 { color: var(--accent); margin-bottom: 10px; font-size: 2rem; }
+
+        h2 { border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; margin-top: 50px; color: var(--accent); }
+
+        /* Grille Images */
+        .gallery { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 25px; 
+        }
+        .card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); border: 1px solid #f1f5f9; }
+        .img-box { width: 100%; height: 220px; background: #e2e8f0; cursor: pointer; overflow: hidden; }
+        .img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+        .img-box img:hover { transform: scale(1.05); }
+        .desc { padding: 15px; font-size: 0.95rem; line-height: 1.4; }
+        .desc strong { color: var(--primary); display: block; margin-bottom: 5px; }
+
+        /* Section PDF */
+        .pdf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+        @media (max-width: 600px) { .pdf-grid { grid-template-columns: 1fr; } }
+        .pdf-card { 
+            background: white; padding: 20px; border-radius: 10px; 
+            display: flex; justify-content: space-between; align-items: center;
+            border-left: 5px solid #ef4444; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .btn-dl { background: #ef4444; color: white; text-decoration: none; padding: 10px 15px; border-radius: 6px; font-weight: bold; font-size: 0.8rem; }
+
+        /* Footer & Contacts */
+        footer { background: var(--accent); color: white; padding: 40px 20px; margin-top: 60px; text-align: center; }
+        .footer-content { max-width: 1100px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-around; gap: 30px; }
+        .footer-section h3 { color: #38bdf8; margin-bottom: 15px; }
+        .footer-section p, .footer-section a { color: #cbd5e1; text-decoration: none; margin: 5px 0; display: block; }
+        .btn-portfolio { display: inline-block; background: #38bdf8; color: var(--accent) !important; padding: 10px 20px; border-radius: 5px; font-weight: bold; margin-top: 10px; }
+        .btn-portfolio:hover { background: white; }
+
+        /* Lightbox */
+        #lightbox { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.9); z-index: 9999; justify-content: center; align-items: center; cursor: pointer; }
+        #lightbox img { max-width: 95%; max-height: 95%; object-fit: contain; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1>Logiciel de Gestion Scolaire Intégré</h1>
+        <p class="intro">
+            Bienvenue dans la présentation de ma solution digitale dédiée aux établissements scolaires. 
+            Ce système permet de centraliser la gestion des élèves, l'automatisation des bulletins de notes, 
+            la génération de documents administratifs (cartes scolaires, certificats) et le suivi pédagogique en temps réel.
+        </p>
+    </div>
+</header>
+
+<div class="container">
+    <h2>Aperçus de l'interface</h2>
+    <div class="gallery">
+        <div class="card">
+            <div class="img-box"><img src="PROJET/add.PNG" alt="Ajout" onclick="zoom(this.src)"></div>
+            <div class="desc"><strong>01. Interface d'Ajout</strong>Gestion complète des fiches élèves : Nom, Prénom, Matricule, Classe et Année Scolaire.</div>
+        </div>
+        <div class="card">
+            <div class="img-box"><img src="PROJET/home.PNG" alt="Home" onclick="zoom(this.src)"></div>
+            <div class="desc"><strong>02. Tableau de Bord</strong>Accès rapide aux recherches multicritères et génération instantanée de certificats.</div>
+        </div>
+        <div class="card">
+            <div class="img-box"><img src="PROJET/triageAll.PNG" alt="Triage" onclick="zoom(this.src)"></div>
+            <div class="desc"><strong>03. Système de Triage</strong>Affichage par classe avec statistiques de genre et outils de modification/suppression.</div>
+        </div>
+        <div class="card">
+            <div class="img-box"><img src="PROJET/addnote.PNG" alt="Notes" onclick="zoom(this.src)"></div>
+            <div class="desc"><strong>04. Saisie des Notes</strong>Formulaire ergonomique pour les notes périodiques et examens, lié au registre PDF.</div>
+        </div>
+        <div class="card">
+            <div class="img-box"><img src="PROJET/documentnote.PNG" alt="Export" onclick="zoom(this.src)"></div>
+            <div class="desc"><strong>05. Génération PDF</strong>Exportation automatique des listes, registres et certificats de scolarité.</div>
+        </div>
+    </div>
+
+    <h2>Documents de sortie (Exemples PDF)</h2>
+    <div class="pdf-grid">
+        <div class="pdf-card">
+            <div><strong>Bulletin Officiel</strong><br><small>Format standard de bulletin généré</small></div>
+            <a href="PROJET/Bulletin_Officiel_a_test.pdf" class="btn-dl" download>Télécharger</a>
+        </div>
+        <div class="pdf-card">
+            <div><strong>Cartes d'identité</strong><br><small>Génération par classe (ex: 6ème)</small></div>
+            <a href="PROJET/Cartes_Scolaires_6ème.pdf" class="btn-dl" download>Télécharger</a>
+        </div>
+        <div class="pdf-card">
+            <div><strong>Liste d'élèves</strong><br><small>Extraction rapide en un clic</small></div>
+            <a href="PROJET/List_Eleve_6ème.pdf" class="btn-dl" download>Télécharger</a>
+        </div>
+        <div class="pdf-card">
+            <div><strong>Registre Professeurs</strong><br><small>Grille de notes dynamique</small></div>
+            <a href="PROJET/Registre_Note.pdf" class="btn-dl" download>Télécharger</a>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Mon Portfolio</h3>
+            <p>Découvrez mes autres projets et réalisations.</p>
+            <a href="https://votre-portfolio.com" class="btn-portfolio" target="_blank">Voir le Portfolio</a>
+        </div>
+        <div class="footer-section">
+            <h3>Me Contacter</h3>
+            <p>📧 Email : <a href="mailto:mmandam246@gmail.com">mmandam246@gmail.com</a></p>
+            <p>📞 Tel : +261 33 64 441 18(Mr Manda)</p>
+            <p>📍 Antananarivo, Itaosy</p>
+        </div>
+        <div class="footer-section">
+            <h3>Réseaux</h3>
+            <a href="#">LinkedIn</a>
+            <a href="#">GitHub</a>
+        </div>
+    </div>
+    <div style="margin-top: 30px; font-size: 0.8rem; opacity: 0.5;">
+        &copy; 2024 - Logiciel de Gestion Scolaire. Tous droits réservés.
+    </div>
+</footer>
+
+<div id="lightbox" onclick="this.style.display='none'">
+    <img id="fullImg">
+</div>
+
+<script>
+    function zoom(src) {
+        document.getElementById('fullImg').src = src;
+        document.getElementById('lightbox').style.display = 'flex';
+    }
+</script>
+
+</body>
+</html>
